@@ -208,7 +208,7 @@ class RelationExtractor(Model):
             "candidates": output_dict.get("relations_candidates_list", []),
             "gold": output_dict.get("relations_true_list", []),
             "scores": output_dict.get("relation_scores", np.array([])),
-            "metadata" : output_dict['metadata']
+            "metadata" : output_dict.get('metadata',[])
         }
 
         if len(new_output_dict["scores"]) > 0:
