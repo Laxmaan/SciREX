@@ -90,10 +90,14 @@ def main(args):
         gold_data, predicted_salient_clusters, predicted_span_to_gold_span_map
     )
 
+    debug_output = {}
+
+    print(f" No. of documents = {len(gold_data)}")
+    flag = False
     for n in [2, 4] :
         all_metrics = []
         for types in combinations(used_entities, n):
-            for doc in gold_data:
+            for c, doc in enumerate(gold_data):
                 predicted_data = predicted_relations[doc["doc_id"]]
                 mapping = predicted_cluster_to_gold_cluster_map[doc["doc_id"]]
 
@@ -119,6 +123,10 @@ def main(args):
 
                 if len(gold_relations) > 0:
                     all_metrics.append(metrics)
+
+                if flag:
+                    print(f'doc # {c} id : {doc["doc_id"]} #matched = {matched} #relations = {len(relations)} #gold = {len(gold_relations)}
+                
 
         all_metrics = pd.DataFrame(all_metrics)
         print(f"Relation Metrics n={n}")
