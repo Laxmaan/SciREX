@@ -125,7 +125,8 @@ def main(args):
                     all_metrics.append(metrics)
 
                 if flag:
-                    print(f'doc # {c} id : {doc["doc_id"]} #matched = {matched} #relations = {len(relations)} #gold = {len(gold_relations)}
+                    print(f'doc # {c} id : {doc["doc_id"]} #matched = {matched}\
+                     #relations = {len(relations)} #gold = {len(gold_relations)}')
                 
 
         all_metrics = pd.DataFrame(all_metrics)
