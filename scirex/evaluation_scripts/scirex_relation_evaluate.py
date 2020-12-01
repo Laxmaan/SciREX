@@ -93,7 +93,7 @@ def main(args):
     debug_output = {}
 
     print(f" No. of documents = {len(gold_data)}")
-    flag = False
+    flag = True
     for n in [2, 4] :
         all_metrics = []
         for types in combinations(used_entities, n):
