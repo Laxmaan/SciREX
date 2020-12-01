@@ -91,6 +91,19 @@ function(p) {
         antecedent_feedforward: make_feedforward(4*featured_embedding_dim),
 	      relation_cardinality: p.relation_cardinality
       },
+      pwc: {
+        bert_model: {
+        pretrained_model: std.extVar("BERT_WEIGHTS"),
+        requires_grad : "pooler,10,11"
+        },
+        aggregate_feedforward: {
+          input_dim: 768,
+          num_layers: 2,
+          hidden_dims: [200, 2],
+          activations: ["relu", "linear"],
+          dropout: [0.2, 0.0]
+        },
+      },
     }
   },
   iterator: {
